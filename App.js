@@ -5,6 +5,7 @@ import { Audio } from 'expo-av';
 import {Montserrat_400Regular, Montserrat_600SemiBold, useFonts} from '@expo-google-fonts/montserrat';
 import { AppLoading } from 'expo';
 import { AntDesign } from '@expo/vector-icons'
+import Player from './src/components/Player';
 
 /*
   MELHORIAS: QUANDO O PLAYER ESTIVER TOCANDO, O TEM QUE TER UM BOTÃO DE PAUSA!
@@ -45,7 +46,83 @@ export default function App() {
       playing: false,
       file: require('./sample1.mp3')
     },
-    
+    {
+      id: 4,
+      name: 'This love',
+      artista: 'Marron 5',
+      playing: false,
+      file: require('./sample1.mp3')
+    },
+    {
+      id: 5,
+      name: 'This love',
+      artista: 'Marron 5',
+      playing: false,
+      file: require('./sample1.mp3')
+    },
+    {
+      id: 6,
+      name: 'This love',
+      artista: 'Marron 5',
+      playing: false,
+      file: require('./sample1.mp3')
+    },
+    {
+      id: 7,
+      name: 'This love',
+      artista: 'Marron 5',
+      playing: false,
+      file: require('./sample1.mp3')
+    },
+    {
+      id: 8,
+      name: 'This love',
+      artista: 'Marron 5',
+      playing: false,
+      file: require('./sample1.mp3')
+    },
+    {
+      id: 9,
+      name: 'This love',
+      artista: 'Marron 5',
+      playing: false,
+      file: require('./sample1.mp3')
+    },
+    {
+      id: 10,
+      name: 'This love',
+      artista: 'Marron 5',
+      playing: false,
+      file: require('./sample1.mp3')
+    },
+    {
+      id: 11,
+      name: 'This love',
+      artista: 'Marron 5',
+      playing: false,
+      file: require('./sample1.mp3')
+    },
+    {
+      id: 12,
+      name: 'This love',
+      artista: 'Marron 5',
+      playing: false,
+      file: require('./sample1.mp3')
+    },
+    {
+      id: 13,
+      name: 'This love',
+      artista: 'Marron 5',
+      playing: false,
+      file: require('./sample1.mp3')
+    },
+    {
+      id: 14,
+      name: 'This love',
+      artista: 'Marron 5',
+      playing: false,
+      file: require('./sample1.mp3')
+    },
   ])
 
   const changeMusic = async (id) =>{
@@ -77,46 +154,49 @@ export default function App() {
   }
 
   return (
-    <ScrollView style={styles.container}>
-      <StatusBar hidden/>
-      <View style={styles.header}>
-        <Text style={styles.title}>App music | Minhas músicas</Text>
-      </View>
+    <View style={{flex: 1}}>
+      <ScrollView style={styles.container}>
+        <StatusBar hidden/>
+        <View style={styles.header}>
+          <Text style={styles.title}>App music | Minhas músicas</Text>
+        </View>
 
-      <View style={styles.table}>
-        <Text style={{width: "50%", color: "rgb(200, 200, 200)", fontFamily: "Montserrat_400Regular", fontSize: 16}}>
-          Músicas
-        </Text>
-        <Text style={{width: "50%", color: "rgb(200, 200, 200)", fontFamily: "Montserrat_400Regular", fontSize: 16}}>
-          Artista
-        </Text>
-      </View>
+        <View style={styles.table}>
+          <Text style={{width: "50%", color: "rgb(200, 200, 200)", fontFamily: "Montserrat_400Regular", fontSize: 16}}>
+            Músicas
+          </Text>
+          <Text style={{width: "50%", color: "rgb(200, 200, 200)", fontFamily: "Montserrat_400Regular", fontSize: 16}}>
+            Artista
+          </Text>
+        </View>
 
-      {
-        musics.map((val, i)=>{
-          if(val.playing){
-            return(
-              <View style={styles.table}>
-              <TouchableOpacity onPress={() => changeMusic(i)} style={{width: "100%", flexDirection:"row"}}>
-                <Text style={{width: "50%", color: "#1DB954", fontFamily: "Montserrat_400Regular"}}><AntDesign name='play' size={15} color='#1DB954' id={val.id}/>   {val.name}</Text>
-                <Text style={{width: "50%", color: "#1DB954", fontFamily: "Montserrat_400Regular"}}>{val.artista}</Text>
-              </TouchableOpacity>
-            </View>
-            )
-          }else{
-            return(
-              <View style={styles.table}>
-              <TouchableOpacity onPress={() => changeMusic(i)} style={{width: "100%", flexDirection:"row"}}>
-                <Text style={{width: "50%", color: "#fff", fontFamily: "Montserrat_400Regular"}}><AntDesign name='play' size={15} color='#fff' id={val.id}/>   {val.name}</Text>
-                <Text style={{width: "50%", color: "#fff", fontFamily: "Montserrat_400Regular"}}>{val.artista}</Text>
-              </TouchableOpacity>
-            </View>
-            )
-          }
-        })
-      }
-
-    </ScrollView>
+        {
+          musics.map((val, i)=>{
+            if(val.playing){
+              return(
+                <View style={styles.table}>
+                <TouchableOpacity onPress={() => changeMusic(i)} style={{width: "100%", flexDirection:"row"}}>
+                  <Text style={{width: "50%", color: "#1DB954", fontFamily: "Montserrat_400Regular"}}><AntDesign name='play' size={15} color='#1DB954' id={val.id}/>   {val.name}</Text>
+                  <Text style={{width: "50%", color: "#1DB954", fontFamily: "Montserrat_400Regular"}}>{val.artista}</Text>
+                </TouchableOpacity>
+              </View>
+              )
+            }else{
+              return(
+                <View style={styles.table}>
+                <TouchableOpacity onPress={() => changeMusic(i)} style={{width: "100%", flexDirection:"row"}}>
+                  <Text style={{width: "50%", color: "#fff", fontFamily: "Montserrat_400Regular"}}><AntDesign name='play' size={15} color='#fff' id={val.id}/>   {val.name}</Text>
+                  <Text style={{width: "50%", color: "#fff", fontFamily: "Montserrat_400Regular"}}>{val.artista}</Text>
+                </TouchableOpacity>
+              </View>
+              )
+            }
+          })
+        }
+      <View style={{paddingBottom: 100}}></View>
+      </ScrollView>
+      <Player/>
+    </View>  
   );
 }
 
