@@ -48,6 +48,20 @@ export default function App() {
     
   ])
 
+  const changeMusic = (id) =>{
+    let newMusic = musics.filter((val, k)=>{
+      if(id === k){
+        musics[id].playing = true
+      }else{
+        musics[k].playing = false
+      }
+
+      return musics[k]
+    })
+
+    setMusics(newMusic)
+  }
+
   return (
     <ScrollView style={styles.container}>
       <StatusBar hidden/>
@@ -65,11 +79,11 @@ export default function App() {
       </View>
 
       {
-        musics.map((val)=>{
+        musics.map((val, i)=>{
           if(val.playing){
             return(
               <View style={styles.table}>
-              <TouchableOpacity style={{width: "100%", flexDirection:"row"}}>
+              <TouchableOpacity onPress={() => changeMusic(i)} style={{width: "100%", flexDirection:"row"}}>
                 <Text style={{width: "50%", color: "#1DB954", fontFamily: "Montserrat_400Regular"}}><AntDesign name='play' size={15} color='#1DB954' id={val.id}/>   {val.name}</Text>
                 <Text style={{width: "50%", color: "#1DB954", fontFamily: "Montserrat_400Regular"}}>{val.artista}</Text>
               </TouchableOpacity>
@@ -78,8 +92,8 @@ export default function App() {
           }else{
             return(
               <View style={styles.table}>
-              <TouchableOpacity style={{width: "100%", flexDirection:"row"}}>
-                <Text style={{width: "50%", color: "#fff", fontFamily: "Montserrat_400Regular"}}><AntDesign name='play' size={15} color='#fff' id={val.id}/>  {val.name}</Text>
+              <TouchableOpacity onPress={() => changeMusic(i)} style={{width: "100%", flexDirection:"row"}}>
+                <Text style={{width: "50%", color: "#fff", fontFamily: "Montserrat_400Regular"}}><AntDesign name='play' size={15} color='#fff' id={val.id}/>   {val.name}</Text>
                 <Text style={{width: "50%", color: "#fff", fontFamily: "Montserrat_400Regular"}}>{val.artista}</Text>
               </TouchableOpacity>
             </View>
