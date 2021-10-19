@@ -6,6 +6,7 @@ import {Montserrat_400Regular, Montserrat_600SemiBold, useFonts} from '@expo-goo
 import { AppLoading } from 'expo';
 import { AntDesign } from '@expo/vector-icons'
 import Player from './src/components/Player';
+import { Fontisto } from '@expo/vector-icons'; 
 
 /*
   MELHORIAS: QUANDO O PLAYER ESTIVER TOCANDO, O TEM QUE TER UM BOTÃO DE PAUSA!
@@ -158,7 +159,7 @@ export default function App() {
       <ScrollView style={styles.container}>
         <StatusBar hidden/>
         <View style={styles.header}>
-          <Text style={styles.title}>App music | Minhas músicas</Text>
+          <Text style={styles.title}>My App Music</Text><Fontisto name="applemusic" size={24} color="black" style={{paddingLeft: 40, marginTop: 5}} />
         </View>
 
         <View style={styles.table}>
@@ -209,12 +210,16 @@ const styles = StyleSheet.create({
   header:{
     backgroundColor: "#1DB954",
     width: "100%",
-    padding: 20
+    padding: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   title:{
     fontFamily: "Montserrat_600SemiBold",
     fontSize: 20,
-    textAlign: "center"
+    textAlign: "center",
+    margin: 'auto'
   },
   table:{
     flexDirection: "row",
