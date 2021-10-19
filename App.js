@@ -47,7 +47,16 @@ export default function App() {
     <ScrollView style={styles.container}>
       <StatusBar hidden/>
       <View style={styles.header}>
-        <Text style={styles.title}>Minhas músicas | App music</Text>
+        <Text style={styles.title}>App music | Minhas músicas</Text>
+      </View>
+
+      <View style={styles.table}>
+        <Text style={{width: "50%", color: "rgb(200, 200, 200)", fontFamily: "Montserrat_400Regular"}}>
+          Músicas
+        </Text>
+        <Text style={{width: "50%", color: "rgb(200, 200, 200)", fontFamily: "Montserrat_400Regular"}}>
+          Artista
+        </Text>
       </View>
     </ScrollView>
   );
@@ -68,5 +77,11 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat_600SemiBold",
     fontSize: 20,
     textAlign: "center"
+  },
+  table:{
+    flexDirection: "row",
+    padding: 20,
+    borderBottomColor: "#fff",
+    borderBottomWidth: 1
   }
 });
