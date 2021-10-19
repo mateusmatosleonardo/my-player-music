@@ -28,30 +28,32 @@ export default function App() {
       id: 1,
       name: 'Bring me to life',
       artista: 'Evanesce',
-      playing: true,
-      file: ""
+      playing: false,
+      file: require('./sample1.mp3')
     },
     {
       id: 2,
       name: 'Back to december',
       artista: 'Taylor swift',
       playing: false,
-      file: ""
+      file: require('./sample1.mp3')
     },
     {
       id: 3,
       name: 'This love',
       artista: 'Marron 5',
       playing: false,
-      file: ""
+      file: require('./sample1.mp3')
     },
     
   ])
 
-  const changeMusic = (id) =>{
+  const changeMusic = async (id) =>{
+    let curFile = null;
     let newMusic = musics.filter((val, k)=>{
-      if(id === k){
-        musics[id].playing = true
+      if(id == k){
+        musics[k].playing = true
+        curFile = musics[k].file
       }else{
         musics[k].playing = false
       }
@@ -59,6 +61,18 @@ export default function App() {
       return musics[k]
     })
 
+    if(audio != null){
+      audio.unloadAsync()
+    }
+
+    let curAudio = new Audio.Sound();
+    
+    try{
+      await curAudio.loadAsync(curFile)
+      await curAudio.playAsync()
+    }catch(error){}
+
+    setAudio(curAudio)
     setMusics(newMusic)
   }
 
