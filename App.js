@@ -203,9 +203,11 @@ export default function App() {
       <View style={{paddingBottom: 100}}></View>
       </ScrollView>
       <Player 
+
         playing={playing} 
         setPlaying={setPlaying} 
         audioIndex={audioIndex} 
+        setAudioIndex={setAudioIndex}
         musics={musics}
         setMusics={setMusics}
         audio={audio}

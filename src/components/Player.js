@@ -5,6 +5,14 @@ import { Sound } from "expo-av/build/Audio";
 
 export default function Player(props){
 
+    const handleBack = async () =>{
+        
+    }
+
+    const handleNext = async () =>{
+        
+    }
+
     const handlePlay = async () =>{
         let curFile = props.musics[props.audioIndex].file
 
@@ -46,7 +54,7 @@ export default function Player(props){
 
     return(
         <View style={styles.player}>
-            <TouchableOpacity style={{marginRight: 20, marginLeft: 20}}>
+            <TouchableOpacity onPress={()=> handleBack()} style={{marginRight: 20, marginLeft: 20}}>
                 <AntDesign name='banckward' size={35} color='#fff'/>
             </TouchableOpacity>
             {
@@ -59,7 +67,7 @@ export default function Player(props){
                 <AntDesign name='pausecircleo' size={35} color='#fff'/>
             </TouchableOpacity>
             }
-            <TouchableOpacity style={{marginRight: 20, marginLeft: 20}}>
+            <TouchableOpacity onPress={()=> handleNext()} style={{marginRight: 20, marginLeft: 20}}>
                 <AntDesign name='forward' size={35} color='#fff'/>
             </TouchableOpacity>
         </View>
