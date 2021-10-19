@@ -1,9 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Audio } from 'expo-av';
 import {Montserrat_400Regular, Montserrat_600SemiBold, useFonts} from '@expo-google-fonts/montserrat';
-import { AppLoading } from 'expo'
+import { AppLoading } from 'expo';
+import { AntDesign } from '@expo/vector-icons'
+
+/*
+  MELHORIAS: QUANDO O PLAYER ESTIVER TOCANDO, O TEM QUE TER UM BOTÃO DE PAUSA!
+*/
 
 export default function App() {
 
@@ -23,7 +28,7 @@ export default function App() {
       id: 1,
       name: 'Bring me to life',
       artista: 'Evanesce',
-      playing: false,
+      playing: true,
       file: ""
     },
     {
@@ -51,13 +56,38 @@ export default function App() {
       </View>
 
       <View style={styles.table}>
-        <Text style={{width: "50%", color: "rgb(200, 200, 200)", fontFamily: "Montserrat_400Regular"}}>
+        <Text style={{width: "50%", color: "rgb(200, 200, 200)", fontFamily: "Montserrat_400Regular", fontSize: 16}}>
           Músicas
         </Text>
-        <Text style={{width: "50%", color: "rgb(200, 200, 200)", fontFamily: "Montserrat_400Regular"}}>
+        <Text style={{width: "50%", color: "rgb(200, 200, 200)", fontFamily: "Montserrat_400Regular", fontSize: 16}}>
           Artista
         </Text>
       </View>
+
+      {
+        musics.map((val)=>{
+          if(val.playing){
+            return(
+              <View style={styles.table}>
+              <TouchableOpacity style={{width: "100%", flexDirection:"row"}}>
+                <Text style={{width: "50%", color: "#1DB954", fontFamily: "Montserrat_400Regular"}}><AntDesign name='play' size={15} color='#1DB954' id={val.id}/>   {val.name}</Text>
+                <Text style={{width: "50%", color: "#1DB954", fontFamily: "Montserrat_400Regular"}}>{val.artista}</Text>
+              </TouchableOpacity>
+            </View>
+            )
+          }else{
+            return(
+              <View style={styles.table}>
+              <TouchableOpacity style={{width: "100%", flexDirection:"row"}}>
+                <Text style={{width: "50%", color: "#fff", fontFamily: "Montserrat_400Regular"}}><AntDesign name='play' size={15} color='#fff' id={val.id}/>  {val.name}</Text>
+                <Text style={{width: "50%", color: "#fff", fontFamily: "Montserrat_400Regular"}}>{val.artista}</Text>
+              </TouchableOpacity>
+            </View>
+            )
+          }
+        })
+      }
+
     </ScrollView>
   );
 }
