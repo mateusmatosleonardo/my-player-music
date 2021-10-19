@@ -23,6 +23,10 @@ export default function App() {
     return <AppLoading/>
   }
 
+  const [audioIndex, setAudioIndex] = useState(0)
+
+  const [playing, setPlaying] = useState(false)
+
   const [audio, setAudio] = useState(null); // controlar o player de áudio por esse estado
 
   const [musics, setMusics] = useState([
@@ -132,6 +136,8 @@ export default function App() {
       if(id == k){
         musics[k].playing = true
         curFile = musics[k].file
+        setPlaying(true)
+        setAudioIndex(id)
       }else{
         musics[k].playing = false
       }
@@ -159,7 +165,7 @@ export default function App() {
       <ScrollView style={styles.container}>
         <StatusBar hidden/>
         <View style={styles.header}>
-          <Text style={styles.title}>My App Music</Text><Fontisto name="applemusic" size={24} color="black" style={{paddingLeft: 40, marginTop: 5}} />
+          <Text style={styles.title}>My App Music</Text><Fontisto name="applemusic" size={24} color="black" style={{paddingLeft: 20, marginTop: 5}} />
         </View>
 
         <View style={styles.table}>
@@ -196,7 +202,15 @@ export default function App() {
         }
       <View style={{paddingBottom: 100}}></View>
       </ScrollView>
-      <Player/>
+      <Player 
+        playing={playing} 
+        setPlaying={setPlaying} 
+        audioIndex={audioIndex} 
+        musics={musics}
+        setMusics={setMusics}
+        audio={audio}
+        setAudio={setAudio}
+      />
     </View>  
   );
 }
